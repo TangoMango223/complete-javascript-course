@@ -6,7 +6,7 @@ console.log(ageChristine);
 
 
 // Age of Sarah - she's old haha!
-const ageSarah = 2037 - 2018;
+const ageSarah = 2037 - 2020;
 console.log(ageSarah);
 
 // Multiple things to do:
@@ -45,4 +45,18 @@ let x = 10 + 5;
 // Console log
 console.log(x);
 
-//
+// Assignment Operators: 
+x += 10 // adds 10, so 25
+x *= 4 // 4 x 25 = 100
+x++ // adds 1 -> 100 + 1
+x--; // 101 - 1 = 100
+
+
+console.log(x);
+
+// Comparison Operators - Christine is older than Sarah
+console.log(ageChristine > ageSarah);
+
+// There are multiple, like < , > , <= and >=
+console.log(ageSarah >= 18);
+// Is she an adult? She's 17 by 2037 lol
