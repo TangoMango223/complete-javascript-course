@@ -1,4 +1,4 @@
-// Let's look at Math Operators
+// Let's look at Math Operators - Part 1
 
 // Example #1 - Christine's age in 2024
 const ageChristine = 2037 - 1997;
@@ -60,3 +60,16 @@ console.log(ageChristine > ageSarah);
 // There are multiple, like < , > , <= and >=
 console.log(ageSarah >= 18);
 // Is she an adult? She's 17 by 2037 lol
+
+// You can also just paste the command into console
+
+// Initialize now to use in future
+const now = 2037
+
+// use "Now":
+console.log(now - ageSarah);
+
+// How does JS know what to do first?
+// now = 2037 year
+// The command below follows PEDMAS
+console.log(now - 1991 > now - 2018);
