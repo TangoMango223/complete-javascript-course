@@ -42,3 +42,4 @@ console.log(`I like to drink ${age >= 18 ? 'wine': 'water'}`);
 // Ternary is NOT a replacement of IF-Else statements, i.e. more complex stuff
 // For quick decisions, Ternary is a good idea.
 // Expression expected for template literals, for example.
+
