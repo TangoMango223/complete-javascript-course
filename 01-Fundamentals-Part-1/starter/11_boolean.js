@@ -8,7 +8,7 @@
 
 // Set variables
 const hasDriversLicense = true;
-const hasGoodVision = false;
+const hasGoodVision = true;
 
 
 // Examples
@@ -32,3 +32,11 @@ console.log(hasDriversLicense && hasGoodVision && isTired); // One operand = fal
 
 
 // Translate to Condition:
+// Remember that !isTired is opposite. 
+if (hasDriversLicense && hasGoodVision && !isTired){
+    console.log("Sarah can drive!")
+} else {
+    console.log("Sarah should not drive.")
+}
+
+// 

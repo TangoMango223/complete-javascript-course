@@ -47,3 +47,25 @@ console.log(markHigherBMI)
 //     console.log(`John's BMI ${BMIJohn}is higher than Mark's ${BMIMark}!`)
 // }
 
+// 
+
+// ------------------------
+// Coding Challenge Code #3:
+
+/* Write your code below. Good luck! 🙂 */
+
+let scoreDolphins, scoreKoalas
+
+scoreKoalas = 88
+scoreDolphins = 96
+
+if (scoreDolphins > scoreKoalas) {
+    console.log("Dolphins win the trophy")
+} else if (scoreKoalas > scoreDolphins) {
+    console.log("Koalas win the trophy")
+} else {
+    console.log("Both wins the trophy")
+}
+
+
+// ---------------
