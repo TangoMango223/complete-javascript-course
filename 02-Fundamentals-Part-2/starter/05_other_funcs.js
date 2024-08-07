@@ -14,7 +14,7 @@ function cutFruitPieces(fruit){
 //  return juice;   
 // }
 
-console.log(fruitProcessor(2,3));
+// console.log(fruitProcessor(2,3));
 
 // Modify to call the cut pieces
 function fruitProcessor(apples, oranges){
@@ -24,9 +24,13 @@ function fruitProcessor(apples, oranges){
     const orangePieces = cutFruitPieces(oranges);
 
     // Juice composition
-    const juice = `Juice with ${applePieces} apples and ${orangePieces} oranges.`;
+    const juice = `Juice with ${applePieces} pieces of apples and ${orangePieces} pieces of oranges.`;
 
     return juice;   
    }
    
-   console.log(fruitProcessor(2,3));
+   console.log(fruitProcessor(2,3)); // 8 pieces of APPL, and 12 pieces of ORNG
+
+   // You must consider - why not just multiply it by 4 and call it a day?
+   // Why are we calling another function?
+   // Would avoid repeating writing the same code multiple times.
