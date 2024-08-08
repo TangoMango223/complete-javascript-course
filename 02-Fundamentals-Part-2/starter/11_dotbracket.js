@@ -4,7 +4,7 @@
 const jonas = {
     firstName: "Jonas",
     lastName: 'Schemedtamann',
-    age: 2037-1991,
+    age: 2037 - 1991,
     job: 'teacher',
     friends: ['Michael', 'Peter', 'Steven'],
 }
@@ -18,7 +18,7 @@ console.log(jonas.lastName); // This gets last name
 console.log(jonas['firstName']); // First Name
 
 // Another example of why this makes sense.
-const nameKey = 'Name'; 
+const nameKey = 'Name';
 
 // Store:
 console.log(jonas['first' + nameKey]); // Gives first name
@@ -43,7 +43,7 @@ const interested_in = prompt('What do you want to know about Jonas? Choose betwe
 // The brackets expression will be evaluated.
 console.log(jonas[interested_in]);
 
-if (jonas[interested_in]){
+if (jonas[interested_in]) {
     console.log(jonas[interested_in]);
 } else {
     console.log
