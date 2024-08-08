@@ -164,4 +164,6 @@ function calcAverage(arr){
 }
 
 // Call function
-console.log(`The average is ${calcAverage(test_array)}`);
+console.log(`Hello! The average is ${calcAverage(test_array)}`);
+
+// alert("Hi there Christine!");
