@@ -63,44 +63,105 @@
 // ------------------------------------ 
 // Coding Challenge #3 - BMI Calculator again
 
-const mark = {
-    fullName: "Mark Miller",
-    mass: 78,
-    height: 1.69,
-    calcBMI: function() {
-        this.bmi = this.mass / (this.height * this.height);
-        return this.bmi;
-    }
+// const mark = {
+//     fullName: "Mark Miller",
+//     mass: 78,
+//     height: 1.69,
+//     calcBMI: function() {
+//         this.bmi = this.mass / (this.height * this.height);
+//         return this.bmi;
+//     }
+// }
+
+// const john = {
+//     fullName: "John Smith",
+//     mass: 92,
+//     height: 1.95,
+//     calcBMI: function() {
+//         this.bmi = this.mass / (this.height * this.height);
+//         return this.bmi;
+//     }
+// }
+
+// // Calculate BMI
+// // john.calcBMI();
+// // mark.calcBMI();
+
+
+// // Log into the console:
+// // console.log(`${mark.calcBMI() < john.calcBMI() ?`John Smith's BMI (${john.bmi}) is higher than Mark Miller's (${mark.bmi})!`: `Mark Miller's (${mark.bmi}) is higher than John Smith's BMI (${john.bmi})`});
+
+// // if (mark.bmi > john.bmi) {
+// //     console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})!`)
+// //   } else if (john.bmi > mark.bmi) {
+// //     console.log(`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})!`)
+// //   }
+
+
+//   // Christine's better solution that calls each function 
+//   // that defines properties and uses ternary operators.
+//   console.log(`${mark.calcBMI() < john.calcBMI() ? 
+//     `John Smith's BMI (${john.bmi}) is higher than Mark Miller's (${mark.bmi})!` : 
+//     `Mark Miller's BMI (${mark.bmi}) is higher than John Smith's BMI (${john.bmi})!`}`);
+
+
+// ------------------------------------ 
+// Coding Challenge #4 - Steven needs a new tip calculator - again!
+
+// Starter code
+const calcTip = function (bill) {
+    return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+  }
+
+// Create array for bills
+let bills = [];
+let tips = [];
+let totals = [];
+
+// Thru calculation using test data:
+bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+
+// Loop thru each item
+for (n = 0; n <= bills.length - 1; n ++){
+    // Calculate tip:
+    const n_tip = calcTip(bills[n]);
+    const n_total = bills[n] + n_tip;
+
+    // Append to the arrays:
+    tips.push(n_tip);
+    totals.push(n_total);
+
 }
 
-const john = {
-    fullName: "John Smith",
-    mass: 92,
-    height: 1.95,
-    calcBMI: function() {
-        this.bmi = this.mass / (this.height * this.height);
-        return this.bmi;
+// Sanity Check:
+console.log(bills);
+console.log(tips);
+console.log(totals);
+
+// Bonus Challenge - calcAverage
+
+let test_array = [1,2,3];
+
+// console.log(test_array[0] + test_array[1]  + test_array[2] );
+
+// console.log(typeof test_array[0]);
+
+// console.log(test_array.length);
+
+function calcAverage(arr){
+    // Store result - set as number:
+    let sum = 0;
+
+    // For loop:
+    for (i = 0; i <= arr.length - 1; i++){
+        // Add the number to sum
+        sum = arr[i] + sum;
+        console.log(sum);
     }
+    // Once done, return the result;
+    return (sum/arr.length);
+
 }
 
-// Calculate BMI
-// john.calcBMI();
-// mark.calcBMI();
-
-
-// Log into the console:
-// console.log(`${mark.calcBMI() < john.calcBMI() ?`John Smith's BMI (${john.bmi}) is higher than Mark Miller's (${mark.bmi})!`: `Mark Miller's (${mark.bmi}) is higher than John Smith's BMI (${john.bmi})`});
-
-// if (mark.bmi > john.bmi) {
-//     console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})!`)
-//   } else if (john.bmi > mark.bmi) {
-//     console.log(`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})!`)
-//   }
-
-
-  // Christine's better solution that calls each function 
-  // that defines properties and uses ternary operators.
-  console.log(`${mark.calcBMI() < john.calcBMI() ? 
-    `John Smith's BMI (${john.bmi}) is higher than Mark Miller's (${mark.bmi})!` : 
-    `Mark Miller's BMI (${mark.bmi}) is higher than John Smith's BMI (${john.bmi})!`}`);
-    
+// Call function
+console.log(`The average is ${calcAverage(test_array)}`);
