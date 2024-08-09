@@ -35,3 +35,6 @@ console.log(document.querySelector('.guess').value);
 
 
 // -------------- LECTURE #2 - HANDLE CLICK EVENTS --------------
+
+// Connected to .check object
+document.querySelector('.check').addEventListener()
