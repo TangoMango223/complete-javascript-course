@@ -36,5 +36,14 @@ console.log(document.querySelector('.guess').value);
 
 // -------------- LECTURE #2 - HANDLE CLICK EVENTS --------------
 
-// Connected to .check object
-document.querySelector('.check').addEventListener()
+// Connected to .check object, which is the bottom item itself
+// addEventListener() is one of the most popular methods
+// Listen for a click.
+
+// addEventListener(action, function pass)
+document.querySelector('.check').addEventListener('click', function() {
+    console.log(document.querySelector('.guess').value);
+});
+
+// Define a function when a click happens. Event Handler.
+
