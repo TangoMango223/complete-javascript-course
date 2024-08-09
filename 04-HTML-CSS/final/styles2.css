@@ -1,0 +1,55 @@
+/* Style Sheet */
+
+/* Comments:
+Web-font: from google services available
+Body - why is it for everyone despite in body? font-family is default for global scope - IT GOES FOR ALL WEBSITE!
+font-size: predefined font size, not applied to all. Font-size can be specified for all classes and tags.
+
+
+*/
+
+
+/* Applies to the entire webpage */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+body{
+    background-color: yellow;
+    font-family: Arial; 
+    font-size: 20px;
+    padding: 1%;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 25px;
+
+}
+
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    text-align: left;
+
+}
+
+
+/* Class Selector: .class_name */
+/* There is no inheritance since it's specifically for class and ID */
+.first {
+    font-size: 40px;
+    color: red;
+    }
+
+/* Hashtag for unique ID*/
+/* There is no inheritance since it's specifically for class and ID */
+#your_name {
+    background-color: white;
+    border: 5px solid #444;
+}
