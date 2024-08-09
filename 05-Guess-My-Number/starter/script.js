@@ -71,13 +71,27 @@ document.querySelector('.check').addEventListener('click', function() {
     console.log(typeof guess);
 
     // Game Logic Evaluation:
+
+     // When number invalid:
     if (!guess){
         document.querySelector('.message').textContent = "Please give a valid whole number!😎";
-    } else if (guess === secretNumber) {
+    } 
+    
+    // When player wins
+    else if (guess === secretNumber) {
         document.querySelector('.message').textContent = "Great job you guessed the right number 🎊!";
         //Update score and update on the page:
         score = score + 1;
-    } else if (guess > secretNumber) {
+
+        // Change background color to "green" for victory! it's style.backgroundColor
+        // All properties attributes must be a string
+        document.querySelector('body').style.backgroundColor = '#60b347'; // Green Color
+        document.querySelector('.number').style.width = '30rem';
+
+    } 
+
+    // When number too high
+    else if (guess > secretNumber) {
         if (score > 1) {
             document.querySelector('.message').textContent = "Too high!";
             score--;
@@ -88,7 +102,9 @@ document.querySelector('.check').addEventListener('click', function() {
             document.querySelector('.score').textContent = 0;
             console.log(score);
         }
-    } else if (guess < secretNumber){
+    } 
+     // When number too low
+    else if (guess < secretNumber){
         if (score > 1) {
             document.querySelector('.message').textContent = "Too low!";
             score--;
