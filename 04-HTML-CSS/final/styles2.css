@@ -52,4 +52,38 @@ h2 {
 #your_name {
     background-color: white;
     border: 5px solid #444;
+    width: 400px;
+    padding: 25px;
+    margin-top: 50px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+
+/* This will apply to both input and button */
+input, button {
+    padding: 10px;
+    font-size: 16px;
+
+}
+
+/* Apply to the anchor link */
+a {
+    background-color: yellowgreen;
+}
+
+
+/* Useful for DOM Manipulation - you can specify elements, for example your_name ID > h2 elements to change: - */
+/* This will only change the color of the title of the form element only, although your_name applies to all elements in that block */
+#your_name h2 {
+    color: green;
+}
+
+
+/* Change attributes of images in HTML CSS */
+/* Usually width is sufficient, changing height as well may awkwardly squish the image */
+#course-image {
+    width: 300px;
 }
