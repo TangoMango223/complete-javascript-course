@@ -61,6 +61,12 @@ let secretNumber = Math.trunc(Math.random()*20)+1;
 let score = 20;
 
 
+// Function block, responsible for message setting.
+const displayMessage = function(message){
+    document.querySelector('.message').textContent = message;
+}
+
+
 // addEventListener(action, function pass)
 // This function is called here, and only exists once in this script scope.
 // We did not define the function anywhere else.
@@ -77,12 +83,12 @@ document.querySelector('.check').addEventListener('click', function() {
 
      // When number invalid:
     if (!guess){
-        document.querySelector('.message').textContent = "Please give a valid whole number!😎";
+        displayMessage("Please give a valid whole number!😎");
     } 
     
     // When player wins
     else if (guess === secretNumber) {
-        document.querySelector('.message').textContent = "Great job you guessed the right number 🎊!";
+        displayMessage("Great job you guessed the right number 🎊!");
         // Reveal the number:
         document.querySelector('.number').textContent = secretNumber;
 
@@ -102,12 +108,12 @@ document.querySelector('.check').addEventListener('click', function() {
     // When number too high
     else if (guess > secretNumber) {
         if (score > 1) {
-            document.querySelector('.message').textContent = "Too high!";
+            displayMessage("Too high!");
             score--;
             document.querySelector('.score').textContent = score;
             console.log(score);
         } else {
-            document.querySelector('.message').textContent = "You lose the game! :(";
+            displayMessage("You lose the game! :(");
             document.querySelector('.score').textContent = 0;
             console.log(score);
         }
@@ -115,12 +121,12 @@ document.querySelector('.check').addEventListener('click', function() {
      // When number too low
     else if (guess < secretNumber){
         if (score > 1) {
-            document.querySelector('.message').textContent = "Too low!";
+            displayMessage("Too low!");
             score--;
             document.querySelector('.score').textContent = score;
             console.log(score);
         } else {
-            document.querySelector('.message').textContent = "You lose the game! :(";
+            displayMessage("You lose the game! :(");
             document.querySelector('.score').textContent = 0;
             console.log(score);
         }
