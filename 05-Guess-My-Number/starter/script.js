@@ -45,10 +45,10 @@ console.log(document.querySelector('.message').textContent); // The text is "sta
 
 
 // Create new number - between 0 and 20:
-const secretNumber = Math.trunc(Math.random()*20)+1;
+let secretNumber = Math.trunc(Math.random()*20)+1;
 
 // Show on the webpage:
-document.querySelector('.number').textContent = secretNumber;
+// document.querySelector('.number').textContent = secretNumber;
 
 
 // Store starting original score
@@ -63,7 +63,6 @@ let score = 20;
 document.querySelector('.check').addEventListener('click', function() {
     // Function will receive and console log the guess.
     
-
     // Save to a variable
     const guess = Number(document.querySelector('.guess').value);
 
@@ -80,6 +79,9 @@ document.querySelector('.check').addEventListener('click', function() {
     // When player wins
     else if (guess === secretNumber) {
         document.querySelector('.message').textContent = "Great job you guessed the right number 🎊!";
+        // Reveal the number:
+        document.querySelector('.number').textContent = secretNumber;
+
         //Update score and update on the page:
         score = score + 1;
 
@@ -116,12 +118,43 @@ document.querySelector('.check').addEventListener('click', function() {
             console.log(score);
         }
     }
-
-    // // Show score backend and display the new score.
-    // console.log(score);
-    // document.querySelector('.score').textContent = score;
-    
 });
 
-// More DOM manipulation.
+// Reset game with AGAIN button:
+document.querySelector('.again').addEventListener('click', function() {
+    // Grab a new secret number:
+    secretNumber = Math.trunc(Math.random()*20)+1;
 
+    // Restore score value:
+    document.querySelector('.score').textContent = 20;
+
+    // Restore initial condition of message:
+    document.querySelector('.message').textContent = "Start guessing...";
+
+    // Restore back the ? icon:
+    document.querySelector('.number').textContent = "?";
+
+    // Restore guess input field to empty:
+    document.querySelector('.guess').value = "";
+
+    // Change background color and number width back to normal:
+    document.querySelector('body').style.backgroundColor = "#222";
+    document.querySelector('number').style.width = "15rem";
+
+
+});
+
+
+///////////////////////////////////////
+// Coding Challenge #1
+
+/* 
+Implement a game rest functionality, so that the player can make a new guess! Here is how:
+
+1. Select the element with the 'again' class and attach a click event handler
+2. In the handler function, restore initial values of the score and secretNumber variables
+3. Restore the initial conditions of the message, number, score and guess input field
+4. Also restore the original background color (#222) and number width (15rem)
+
+GOOD LUCK 😀
+*/
