@@ -43,6 +43,10 @@ console.log(document.querySelector('.message').textContent); // The text is "sta
     // // Show "Correct Number!"
     // document.querySelector('.message').textContent = "Correct Number!";
 
+// Implementing High Scores
+let highscore = 0;
+
+
 
 // Create new number - between 0 and 20:
 let secretNumber = Math.trunc(Math.random()*20)+1;
@@ -82,8 +86,11 @@ document.querySelector('.check').addEventListener('click', function() {
         // Reveal the number:
         document.querySelector('.number').textContent = secretNumber;
 
-        //Update score and update on the page:
-        score = score + 1;
+        // Update high score:
+        if (score > highscore){
+            highscore = score // update it now
+            document.querySelector(".highscore").textContent = highscore // will be updated
+        }
 
         // Change background color to "green" for victory! it's style.backgroundColor
         // All properties attributes must be a string
@@ -120,6 +127,20 @@ document.querySelector('.check').addEventListener('click', function() {
     }
 });
 
+///////////////////////////////////////
+// Coding Challenge #1
+
+/* 
+Implement a game rest functionality, so that the player can make a new guess! Here is how:
+
+1. Select the element with the 'again' class and attach a click event handler
+2. In the handler function, restore initial values of the score and secretNumber variables
+3. Restore the initial conditions of the message, number, score and guess input field
+4. Also restore the original background color (#222) and number width (15rem)
+
+GOOD LUCK 😀
+*/
+
 // Reset game with AGAIN button:
 document.querySelector('.again').addEventListener('click', function() {
     // Grab a new secret number:
@@ -141,20 +162,5 @@ document.querySelector('.again').addEventListener('click', function() {
     document.querySelector('body').style.backgroundColor = "#222";
     document.querySelector('number').style.width = "15rem";
 
-
 });
 
-
-///////////////////////////////////////
-// Coding Challenge #1
-
-/* 
-Implement a game rest functionality, so that the player can make a new guess! Here is how:
-
-1. Select the element with the 'again' class and attach a click event handler
-2. In the handler function, restore initial values of the score and secretNumber variables
-3. Restore the initial conditions of the message, number, score and guess input field
-4. Also restore the original background color (#222) and number width (15rem)
-
-GOOD LUCK 😀
-*/
