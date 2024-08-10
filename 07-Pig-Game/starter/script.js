@@ -38,27 +38,31 @@ score0El.textContent = 0;
 score1El.textContent = 0;
 diceEl.classList.add('hidden'); // hide dice
 
+// Game Functions:
+
+// 1) Switch Players:
+const switchPlayers = function(){
+
+    // CURRENT PLAYER: Current Score needs to be internally reset
+    currentScore = 0;
+
+    // CURRENT PLAYER: Visually fix this...
+    document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+
+    // -- Officially change to another player:
+    // Change between players at the end:
+    activePlayer = (activePlayer === 0 ? 1: 0);
+
+    // Toggle to switch between active players - visual
+    player0El.classList.toggle('player--active');
+    player1El.classList.toggle('player--active');
+};
+
+
 // // Rolling dice conditions:
 btnRoll.addEventListener('click', function() {
-
-
     // Functionality to switch between players:
-    const switchPlayers = function(){
-
-        // Change between players
-        activePlayer = (activePlayer === 0 ? 1: 0);
-
-        // currentScore needs to be set back to zero:
-        currentScore = 0;
-
-        // Visually update as well:
-        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
-
-        // Toggle to switch between active players - visual
-        player0El.classList.toggle('player--active');
-        player1El.classList.toggle('player--active');
-    };
-
+    
     // 1. Generate random dice roll. Random num from 1 to 6.
     const dice = Math.trunc(Math.random() * 6) + 1;
 
@@ -96,27 +100,40 @@ btnRoll.addEventListener('click', function() {
         // // Vice versa infinitely!
         // player0El.classList.toggle('player--active');
         // player1El.classList.toggle('player--active');
-
-    // Functionality to hold score and switch player
-    btnHold.addEventListener("click", function (){
-
-        // Internally, let's update the scores array:
-        scores[activePlayer] = scores[activePlayer] + currentScore;
-
-        // Visually display the new total score
-        document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
-
-        // Reset current score & visually update it:
-        currentScore = 0;
-
-        // Activate function to change active player:
-        switchPlayers();
     })
 
+// Functionality to hold score and switch player
+btnHold.addEventListener("click", function (){
+
+    // Internally, let's update the scores array:
+    scores[activePlayer] = scores[activePlayer] + currentScore;
+    
+    // Visually display the new toal score
+    document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
 
 
-    // Debugging and testing
-    console.log(`Active Player is ${activePlayer}!`);
+    // Check if any player's score is or exceeds 100;
+    if (scores[activePlayer] >= 20) {
+        // Finishes the game:
+        // Remove the active background coloring:
+        document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
 
+        // Add the winner coloring
+        document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
+
+        // We need to end the game:
+        
+
+
+    } else { 
+        // Activate function to change active player:
+        switchPlayers();
+    }
 
 });
+
+// Debugging and testing
+console.log(`Active Player is ${activePlayer}!`);
+
+
+
