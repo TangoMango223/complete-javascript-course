@@ -53,11 +53,10 @@ for (let i = 0; i < btnsOpenModal.length; i++) {
     btnCloseModal.addEventListener("click", closedModal);
     overlay.addEventListener('click', closedModal);
 
-    // Listen for leys pressed:
-    document.addEventListener('keydown', function (){
+    // Listen for leys pressed - pass "e" as event parameter:
+    // e = keyboard event
+    document.addEventListener('keydown', function (e){
         console.log("A key was pressed!");
-
-
 
     });
 
