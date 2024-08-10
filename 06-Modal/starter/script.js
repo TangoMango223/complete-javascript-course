@@ -53,14 +53,28 @@ for (let i = 0; i < btnsOpenModal.length; i++) {
     btnCloseModal.addEventListener("click", closedModal);
     overlay.addEventListener('click', closedModal);
 
-    // Listen for leys pressed - pass "e" as event parameter:
+    // Listen for keys pressed - pass "e" as event parameter:
     // e = keyboard event
     document.addEventListener('keydown', function (e){
-        console.log("A key was pressed!");
-        console.log(e); // Check the information associated with e
-        
-    });
+        // console.log("A key was pressed!");
+        // console.log(e); // Check the information associated with e
 
+        // Hide again with the ESC key:
+        // We are adding the hidden property again, since we want to hide the modal, once ESC is pressed
+        // We are doing the reverse (with !) since we want to hide anything that's visible once the ESC is pressed.
+        if (e.key === 'Escape') { 
+            if(!modal.classList.contains('hidden')){
+                // This function will close again, adding the hidden property again:
+                closedModal();
+            }
+        }
+
+        // If you want refactor and be a better programmer, you can combine the two conditions together :D
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                // This function will close again, adding the hidden property again:
+                closedModal();
+            }
+    });
 };
 
 
