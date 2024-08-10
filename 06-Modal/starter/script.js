@@ -57,7 +57,8 @@ for (let i = 0; i < btnsOpenModal.length; i++) {
     // e = keyboard event
     document.addEventListener('keydown', function (e){
         console.log("A key was pressed!");
-
+        console.log(e); // Check the information associated with e
+        
     });
 
 };
