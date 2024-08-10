@@ -165,3 +165,11 @@ main {
   font-weight: 700;
   color: #c7365f;
 }
+
+/* This part is slightly confusing. So in CSS, one way to hide is display: none to a class
+In HTML, you can add "hidden" keyword to a html tag, like <p hidden>
+Link: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden
+*/
+.hidden {
+  display:none;
+}
