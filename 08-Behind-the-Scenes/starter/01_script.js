@@ -166,21 +166,133 @@
 
 // -------------- Exercise #4 - Regular vs. Arrow Functions --------------
 
-const jonas = {
-    year: 1991,
-    calcAge: function(){
-        console.log(this); // This will point to the jonas object
-        console.log(2037 - this.year);
-    },
-    greet: () => console.log(`Hey ${this.firstName}`),
+// const jonas = {
+//     year: 1991,
+//     calcAge: function(){
+//         console.log(this); // This will point to the jonas object
+//         console.log(2037 - this.year);
+//     },
+//     greet: () => console.log(`Hey ${this.firstName}`),
+// };
+
+// // See what happens:
+// jonas.greet(); // This will give undefined, since arrow functions point to window function, not the JS object
+
+
+// // Christine finish the code in the morning when you have more energy!
+
+
+// // -------------- Exercise #5 - Primitives vs. Objects --------------
+
+
+// // Primitive Type Behaviour - Var assignments
+// let age = 30;
+// let oldAge = age;
+// age = 31;
+
+// console.log(age);
+// console.log(oldAge);
+
+
+// // JS Object (Object Reference) Behaviours
+// const me = {
+//     name: 'Jonas',
+//     age: 30,
+// };
+
+// const friend = me; // Points to the me object in memory in Stack/Heap
+// friend.age = 27;  // Is now reassigned value of .age
+
+// // Notice that when assinging friend = me, the Joans object's age property got re-written:
+// console.log('Friend:', friend);
+// console.log('Me', me);
+
+
+// -------------- Exercise #6 - Primitives vs. Objects Practice --------------
+
+
+// Primitive Type EXAMPLE
+
+// Marriage
+let lastName = 'Williams';
+let oldLastName = lastName;
+
+lastName = 'Davis';
+
+console.log(lastName, oldLastName)
+
+// Each Primitive Value will be saved to its own memory address in Stack
+// When lastName was updated to Davis, a new location memory was created.
+// But oldLastName still points to Williams
+
+// Object Example
+
+const jessica = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 27,
+}
+
+const marriedJessica = jessica; // Copying reference, all will point to same object
+
+
+// Due to Object Assignment, they're both pointing to the same address
+marriedJessica.lastName = 'Davis';
+console.log('Before Marriage:', jessica);
+console.log('After Marriage:', marriedJessica); 
+
+
+//marriedJessica = {};
+
+// Object.assignment - merge two objects and reassign:
+
+// Copying objects, truly:
+const jessica2 = {
+    firstName: 'Jessica',
+    lastName: 'Williams',
+    age: 27,
+    family: ["Alice", "Bob"], // This will be affected by 
 };
 
-// See what happens:
-jonas.greet(); // This will give undefined, since arrow functions point to window function, not the JS object
+const jessicaCopy = Object.assign({}, jessica2); 
+
+// Change last name:
+jessicaCopy.lastName = 'Davis';
+console.log('Before Marriage:', jessica2);
+console.log('After Marriage:', jessicaCopy);  // Shallow Copy, changes to each other will affect each other
+
+// Properties were copied from one another.
+// Reference to new object
+
+// Problem - Object.assign() will fail - only level 1 works - Shallow Copy.
+// Shallow - first level, i.e if there's more levels in the stuff in the JS object
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+// Check for the family memories.
+// Oh no - both objects still reference each other for deeper objects 
+console.log('Before Marriage:', jessica2); 
+console.log('After Marriage:', jessicaCopy); 
+
+// How to solve this: Do a deep clone...
+const a = {
+    x: 1,
+    y: { z: 2 }
+};
+
+// Perform a deep copy
+const b = JSON.parse(JSON.stringify(a));
+
+// Modify the original object
+a.y.z = 42;
+
+console.log(a); // Output: { x: 1, y: { z: 42 } }
+console.log(b); // Output: { x: 1, y: { z: 2 } }
 
 
-// Christine finish the code in the morning when you have more energy!
 
 
-// -------------- Exercise #5 - Primitives vs. Objects --------------
+
+
+
 
