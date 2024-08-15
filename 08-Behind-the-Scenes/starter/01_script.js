@@ -140,18 +140,18 @@
 // jonas.calcAge();
 // jonas.greet();
 
-// // // Second example:
-// // const matlida = {
-// //     year: 2017
-// // }
+// // Second example:
+// const matlida = {
+//     year: 2017
+// }
 
-// // // Copy this function over
-// // // Method borrowing
-// // matlida["calcAge"] = jonas["calcAge"]
+// // Copy this function over
+// // Method borrowing
+// matlida["calcAge"] = jonas["calcAge"]
 
 
-// // // Gave us the correct 
-// // matlida.calcAge();
+// // Gave us the correct 
+// matlida.calcAge();
 
 // // Matlida is now an object that inherited the function 
 
@@ -159,27 +159,75 @@
 // // Even though the method is written to matlida, when you access the object, this will point to matlida.
 
 
-// // // Example of "this" being dynamic - it moves with the context and object it lives in :
-// // const f = jonas.calcAge
-// // f() // This will fail since f does not have .year, so the calculation fails.
+// // Example of "this" being dynamic - it moves with the context and object it lives in :
+// const f = jonas.calcAge
+// f() // This will fail since f does not have .year, so the calculation fails.
 
 
 // -------------- Exercise #4 - Regular vs. Arrow Functions --------------
 
-// const jonas = {
-//     year: 1991,
-//     calcAge: function(){
-//         console.log(this); // This will point to the jonas object
-//         console.log(2037 - this.year);
-//     },
-//     greet: () => console.log(`Hey ${this.firstName}`),
-// };
 
-// // See what happens:
-// jonas.greet(); // This will give undefined, since arrow functions point to window function, not the JS object
+// Created in global scope, so any ref to First Name will point to window's first_name, which is Matlida here
+var firstName = "Matilda";
+
+const jonas = {
+    year: 1991,
+    calcAge: function(){
+        console.log(this); // This will point to the jonas object
+        console.log(2037 - this.year);
+
+        // Solve the "This problem" - Solution #1
+        // const self = this;
+
+        // const isMillennial = function () {
+        //     console.log(self.year >= 1981 && self.year <= 1996); // Bug in JS - this keyword stops working once you go one-level down (i.e. function)
+        // }; 
+
+        // isMillennial();
+        // Scope is different for "this", since it's undefined in this scenario
+
+        // Solution #2 - use arrow functions
+        // Arrow functions don't have this point by default to the window function, which happens for func decls
+        const isMillennial = () => {
+            console.log(this);
+            console.log(self.year >= 1981 && self.year <= 1996); 
+        };
+    },
+    greet: () => {
+        console.log(`Hey ${this}`), // Window Object
+        console.log(`Hey ${this.firstName}`) // 
+        
+    }// Window object "this" is undefined
+};
+
+// See what happens:
+jonas.greet(); // This will give undefined, since arrow functions point to window function, not the JS object
+
+console.log(this.firstName); 
+
+// Call - should call entire function
+jonas.calcAge();
 
 
-// // Christine finish the code in the morning when you have more energy!
+
+// Next topic: addExpr
+// the arguments keyword can reference all of them
+
+const addExpr = function(a,b){
+    console.log(arguments);
+    return a + b;
+}
+
+addExpr(2,3);
+addExpr(2,5,11,10); // it can also retain arguments even beyond the scope of the params of the function
+
+// This behaviour is NOT  the same in var though
+var addArrow = function(a,b){
+    console.log(arguments);
+    return a + b;
+}
+
+addArrow(2,3); // Does not exist in VAR anyway
 
 
 // // -------------- Exercise #5 - Primitives vs. Objects --------------
@@ -211,83 +259,86 @@
 // -------------- Exercise #6 - Primitives vs. Objects Practice --------------
 
 
-// Primitive Type EXAMPLE
+// // Primitive Type EXAMPLE
 
-// Marriage
-let lastName = 'Williams';
-let oldLastName = lastName;
+// // Marriage
+// let lastName = 'Williams';
+// let oldLastName = lastName;
 
-lastName = 'Davis';
+// lastName = 'Davis';
 
-console.log(lastName, oldLastName)
+// console.log(lastName, oldLastName)
 
-// Each Primitive Value will be saved to its own memory address in Stack
-// When lastName was updated to Davis, a new location memory was created.
-// But oldLastName still points to Williams
+// // Each Primitive Value will be saved to its own memory address in Stack
+// // When lastName was updated to Davis, a new location memory was created.
+// // But oldLastName still points to Williams
 
-// Object Example
+// // Object Example
 
-const jessica = {
-    firstName: 'Jessica',
-    lastName: 'Williams',
-    age: 27,
-}
+// const jessica = {
+//     firstName: 'Jessica',
+//     lastName: 'Williams',
+//     age: 27,
+// }
 
-const marriedJessica = jessica; // Copying reference, all will point to same object
-
-
-// Due to Object Assignment, they're both pointing to the same address
-marriedJessica.lastName = 'Davis';
-console.log('Before Marriage:', jessica);
-console.log('After Marriage:', marriedJessica); 
+// const marriedJessica = jessica; // Copying reference, all will point to same object
 
 
-//marriedJessica = {};
+// // Due to Object Assignment, they're both pointing to the same address
+// marriedJessica.lastName = 'Davis';
+// console.log('Before Marriage:', jessica);
+// console.log('After Marriage:', marriedJessica); 
 
-// Object.assignment - merge two objects and reassign:
 
-// Copying objects, truly:
-const jessica2 = {
-    firstName: 'Jessica',
-    lastName: 'Williams',
-    age: 27,
-    family: ["Alice", "Bob"], // This will be affected by 
-};
+// //marriedJessica = {};
 
-const jessicaCopy = Object.assign({}, jessica2); 
+// // Object.assignment - merge two objects and reassign:
 
-// Change last name:
-jessicaCopy.lastName = 'Davis';
-console.log('Before Marriage:', jessica2);
-console.log('After Marriage:', jessicaCopy);  // Shallow Copy, changes to each other will affect each other
+// // Copying objects, truly:
+// const jessica2 = {
+//     firstName: 'Jessica',
+//     lastName: 'Williams',
+//     age: 27,
+//     family: ["Alice", "Bob"], // This will be affected by 
+// };
 
-// Properties were copied from one another.
-// Reference to new object
+// const jessicaCopy = Object.assign({}, jessica2); 
 
-// Problem - Object.assign() will fail - only level 1 works - Shallow Copy.
-// Shallow - first level, i.e if there's more levels in the stuff in the JS object
-jessicaCopy.family.push('Mary');
-jessicaCopy.family.push('John');
+// // Change last name:
+// jessicaCopy.lastName = 'Davis';
+// console.log('Before Marriage:', jessica2);
+// console.log('After Marriage:', jessicaCopy);  // Shallow Copy, changes to each other will affect each other
 
-// Check for the family memories.
-// Oh no - both objects still reference each other for deeper objects 
-console.log('Before Marriage:', jessica2); 
-console.log('After Marriage:', jessicaCopy); 
+// // Properties were copied from one another.
+// // Reference to new object
 
-// How to solve this: Do a deep clone...
-const a = {
-    x: 1,
-    y: { z: 2 }
-};
+// // Problem - Object.assign() will fail - only level 1 works - Shallow Copy.
+// // Shallow - first level, i.e if there's more levels in the stuff in the JS object
+// jessicaCopy.family.push('Mary');
+// jessicaCopy.family.push('John');
 
-// Perform a deep copy
-const b = JSON.parse(JSON.stringify(a));
+// // Check for the family memories.
+// // Oh no - both objects still reference each other for deeper objects 
+// console.log('Before Marriage:', jessica2); 
+// console.log('After Marriage:', jessicaCopy); 
 
-// Modify the original object
-a.y.z = 42;
+// // How to solve this: Do a deep clone...
 
-console.log(a); // Output: { x: 1, y: { z: 42 } }
-console.log(b); // Output: { x: 1, y: { z: 2 } }
+// // Making deep clones requires using JSON's parse and stringify
+
+// const a = {
+//     x: 1,
+//     y: { z: 2 }
+// };
+
+// // Perform a deep copy
+// const b = JSON.parse(JSON.stringify(a));
+
+// // Modify the original object
+// a.y.z = 42;
+
+// console.log(a); // Output: { x: 1, y: { z: 42 } }
+// console.log(b); // Output: { x: 1, y: { z: 2 } }
 
 
 
